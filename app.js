@@ -1,6 +1,6 @@
 /* Global Variables */
 const base_URL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '&APPID=***'
+const apiKey = '&appid=747676b2a816f589b7df1a28d0a53dbb'
 
 // Event listener to add function to existing HTML DOM element
 document.getElementById('generate').addEventListener('click', performAction);
@@ -17,14 +17,14 @@ function performAction() {
 	retrieveWeatherData(base_URL, zipCode, apiKey)
 		.then(function (data) {
 			console.log(data.main.temp + "TEmp");
-			postData('/saveData', {
+			postData('https://guarded-eyrie-82721.herokuapp.com/saveData', {
 				temp: data.main.temp,
 				date: newDate,
 				userResponse: content
 			});
 		})
 		.then(function () {
-			getData("/getRecentWeatherData")
+			getData("https://guarded-eyrie-82721.herokuapp.com/getRecentWeatherData")
 				.then(function (data) {
 					console.log(data + 'data');
 					try {
